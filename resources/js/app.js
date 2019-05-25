@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('app-chat', require('./components/Chat.vue').default);
 Vue.component('app-messages', require('./components/Messages.vue').default);
+Vue.component('app-talk', require('./components/Talk.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -34,19 +35,23 @@ const app = new Vue({
 
     el: '#app',
 
+
     data: {
-        messages: []
+        messages: [],
+
     },
 
     created() {
         this.fetchMessages();
 
-        Echo.private('chat')
+        window.Echo.private('chat')
             .listen('MessageSent', (e) => {
-                this.messages.push({
-                    message: e.message.message,
-                    user: e.user
-                });
+                // this.messages.push({
+                //     message: e.message.message,
+                //     user: e.user
+                // });
+
+                console.log('here')
             });
     },
 
@@ -58,12 +63,16 @@ const app = new Vue({
             });
         },
 
-        addMessage(message) {
-            this.messages.push(message);
+        addMessage(data) {
 
-            axios.post('/messages', message).then(response => {
+            console.log(data);
+            this.messages.push(data);
+            //
+            axios.post('/messages', {message: data.message, talk_id: data.talk_id}).then(response => {
                 console.log(response.data);
-            });
+            }).catch(error => {
+                console.log(error)
+            })
         }
     }
 });

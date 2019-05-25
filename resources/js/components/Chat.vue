@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['user', 'talk_id'],
 
         data() {
             return {
@@ -24,7 +24,8 @@
             sendMessage() {
                 this.$emit('messagesent', {
                     user: this.user,
-                    message: this.newMessage
+                    message: this.newMessage,
+                    talk_id: this.talk_id
                 });
 
                 this.newMessage = ''
@@ -32,3 +33,5 @@
         }
     }
 </script>
+
+

@@ -11,15 +11,20 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/', 'API\ChatsController@index');
+//Route::get('/', 'API\ChatsController@index');
 Route::get('messages', 'API\ChatsController@fetchMessages');
 Route::post('messages', 'API\ChatsController@sendMessage');
+
+
+Route::post('talk', 'API\TalkController@store');
+Route::get('talk/{slug}', 'API\TalkController@view');
+Route::get('/talk/chat{slug}', 'API\TalkController@chat');

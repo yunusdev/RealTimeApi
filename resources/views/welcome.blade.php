@@ -1,99 +1,50 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('styles')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+@endsection
 
-            .full-height {
-                height: 100vh;
-            }
+@section('content')
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Chats</div>
 
-            .position-ref {
-                position: relative;
-            }
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Direct Chat</h3>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+                            <div class="card-tools">
+                                <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
+                                <button type="button" class="btn btn-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+                                    <i class="fa fa-comments"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
 
-            .content {
-                text-align: center;
-            }
 
-            .title {
-                font-size: 84px;
-            }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+                        </div>
+                        <!-- /.card-body -->
+                        <app-chat
+                                v-on:messagesent="addMessage"
+                                :user="{{ auth()->user() }}"
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                        ></app-chat>
+                        <!-- /.card-footer-->
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
