@@ -28,7 +28,8 @@
 
         <p style="margin-top: -30px">- Create a User</p>
         <p>- User can create a talk or join a talk created by another user provided the creator of the talk added the user to the list of attendees.
-            If you try accessing the url of the talk and you arent added you get redirected to a 404</p>
+            If you try accessing the url of a talk you arent added to you get redirected to a 404</p>
+        <p>- User Also have to manually add himself just like he added others if  he wants to take part in the chat.</p>
         <p>- To create a talk click on the modal on the top right named CREATE TALK (after logging in)</p>
         <p>- All the talks can be found <a href="{{route('all_talk')}}">here</a></p>
         <p>- Clicking on a talk will lead the attendees to the chat room</p>

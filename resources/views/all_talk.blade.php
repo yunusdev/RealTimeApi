@@ -24,7 +24,6 @@
             </header>
 
 
-
             <div class="row gap-y">
 
                 @forelse($talks as $talk)
@@ -34,10 +33,13 @@
 
                             <div>
                                 <h5><a title="Go to chat room" href="{{route('chat', $talk->slug)}}">{{$talk->name}}</a></h5>
+                                <span title="" class="badge-primary badge pull-right">{{$talk->messages->count()}} messages</span>
                                 <p>{{str_limit($talk->description), 150}}.</p>
 
                                 <div  class="pull-right mb-5" >
                                     <code style="font-size: 10px">Users Attached</code>
+
+
                                 </div>
 
                                 @foreach($talk->users as $user)
