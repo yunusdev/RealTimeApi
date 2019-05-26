@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Str;
 
+$url = parse_url(getenv('postgres://ftkvqocgfqfqrf:61a46417dcfd428a57731952295147fa7844599187e136ad2d97f0b388654830@ec2-54-225-106-93.compute-1.amazonaws.com:5432/devno8ham4693b'));
+$host =  $url["host"] ?? null;
+$username = $url["user"] ?? null;
+$password = $url["pass"] ?? null;
+$database =  substr($url["path"], 1) ?? null;
+
 return [
 
     /*
@@ -15,7 +21,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql_production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,6 +83,18 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+
+        'pgsql_production' => [
+            'driver' => 'pgsql',
+            'host' => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+        ],
+
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
