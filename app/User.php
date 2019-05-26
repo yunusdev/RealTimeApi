@@ -42,8 +42,14 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function talks()
+    public function talkings()
     {
         return $this->hasMany(Talk::class);
+    }
+
+    public function talks(){
+
+        return $this->belongsToMany(Talk::class, 'user_talks')->withTimestamps();
+
     }
 }

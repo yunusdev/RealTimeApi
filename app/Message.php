@@ -8,6 +8,8 @@ class Message extends Model
 {
     //
 
+    protected $appends = ['time'];
+
     public $guarded = [];
 
 
@@ -19,5 +21,10 @@ class Message extends Model
     public function talk()
     {
         return $this->belongsTo(Talk::class);
+    }
+
+    public function getTimeAttribute(){
+
+        return $this->created_at->diffForHumans();
     }
 }

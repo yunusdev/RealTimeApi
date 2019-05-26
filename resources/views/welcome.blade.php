@@ -2,49 +2,44 @@
 
 @section('styles')
 
-    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">--}}
 
 @endsection
 
 @section('content')
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Chats</div>
-
-                    <div class="card direct-chat direct-chat-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Direct Chat</h3>
-
-                            <div class="card-tools">
-                                <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
-                                <button type="button" class="btn btn-tool" data-widget="collapse">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
-                                    <i class="fa fa-comments"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-
-
-
-                        </div>
-                        <!-- /.card-body -->
-                        <app-chat
-                                v-on:messagesent="addMessage"
-                                :user="{{ auth()->user() }}"
-
-                        ></app-chat>
-                        <!-- /.card-footer-->
+        <header data-overlay="8" class="header header-inverse bg-fixed"
+                style="background-image: url({{asset('bg-thunder.jpg')}});">
+            <div class="container text-center"><div class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <h1>Real Time Chat</h1>
+                        <p class="fs-18 opacity-70">A mini website for chatting</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
+
+    <div class="container mt-20 mb-50">
+        <header class="section-header">
+            <small><strong>Feature</strong></small>
+            <h2>How it works!</h2>
+            <hr>
+        </header>
+
+        <p style="margin-top: -30px">- Create a User</p>
+        <p>- User can create a talk or join a talk created by another user provided the creator of the talk added the user to the list of attendees.
+            If you try accessing the url of the talk and you arent added you get redirected to a 404</p>
+        <p>- To create a talk click on the modal on the top right named CREATE TALK (after logging in)</p>
+        <p>- All the talks can be found <a href="{{route('all_talk')}}">here</a></p>
+        <p>- Clicking on a talk will lead the attendees to the chat room</p>
     </div>
+
+
+@endsection
+
+
+@section('scripts')
+
+
+
 @endsection

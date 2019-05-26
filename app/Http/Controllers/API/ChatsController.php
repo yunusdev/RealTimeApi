@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Events\MessageSent;
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +13,11 @@ class ChatsController extends Controller
 {
     //
 
-    public function index()
+    public function home()
     {
-        return view('chat');
+
+        return view('welcome');
+
     }
 
     /**
@@ -26,7 +29,7 @@ class ChatsController extends Controller
     {
         $user = auth()->user();
 
-        return Message::with('user')->get();
+        return Message::with('user', 'talk')->get();
     }
 
     /**
@@ -40,22 +43,13 @@ class ChatsController extends Controller
         $user = Auth::user();
 
 
-//        return $request->message;
         $message = new Message();
-
-
 
         $message->message = $request->message;
         $message->user_id = $user->id;
         $message->talk_id = $request->talk_id;
 
         $message->save();
-
-//        $message = $user->messages()->create([
-//            'message' => $request->input('message')
-////            'talk_id' => $request->input('talk_id')
-//        ]);
-//
         broadcast(new MessageSent($user, $message))->toOthers();
 
         return ['status' => 'Message Sent!'];

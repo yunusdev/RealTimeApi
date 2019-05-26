@@ -7,12 +7,22 @@
                 <form>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" v-model="name">
+                        <label for="description">Name</label>
+                        <input :class="{ 'is-invalid': errors.hasError('name')}" type="text" class="form-control" placeholder="Name" v-model="name">
+
+                        <div style="color: red; font-size: 12px " class="invalid-feedback" v-if="errors.hasError('name')"><strong><i>{{ errors.first('name') }}</i></strong></div>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea class="form-control" name="description" v-model="description" id="description" cols="30" rows="5"></textarea>
+                        <textarea :class="{ 'is-invalid': errors.hasError('description')}" class="form-control" name="description" v-model="description" id="description" cols="30" rows="5"></textarea>
+
+                        <div style="color: red; font-size: 12px " class="invalid-feedback" v-if="errors.hasError('description')"><strong><i>{{ errors.first('description') }}</i></strong></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="typo__label">Add Attendees </label>
+                        <multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
                     </div>
 
                     <div class="form-group">
@@ -26,10 +36,24 @@
 
 <script>
     import Axios from 'axios'
+    import Multiselect from 'vue-multiselect'
+    import ErrorBag from './error_bag'
 
-    export default {
 
-        props: ['user'],
+export default {
+
+        props: ['user', 'users_raw'],
+
+        components: {
+            Multiselect
+        },
+
+        mounted(){
+
+            if (this.errors.hasErrors()) {
+                this.errors.clearAll();
+            }
+        },
 
         data(){
 
@@ -37,29 +61,61 @@
 
                 name: '',
                 email: '',
-                description: ''
+                value: [],
+                description: '',
+                options: JSON.parse(this.users_raw),
+                errors: new ErrorBag
+
             }
         },
 
+
+
         methods: {
 
-            createTalk(){
 
-                    Axios.post('/talk', {
+            addTag (newTag) {
+                const tag = {
+                    name: newTag
+                }
+                console.log(tag);
+                this.options.push(tag)
+                this.value.push(tag)
+            },
 
-                        name: this.name,
-                        description: this.description
-                    }).then(res => {
 
-                        let data = res.data;
 
-                        window.location = '/talk/' + data.slug
+            createTalk() {
 
-                    }).catch(err => {
+                let identities = []
 
-                        console.log(err)
+                this.value.forEach(function(element) {
 
-                    })
+                    identities.push(element.id)
+
+                });
+
+                Axios.post('/talk', {
+
+                    name: this.name,
+                    description: this.description,
+                    users_arr: identities
+                }).then(res => {
+
+                    let data = res.data;
+
+                    window.location = '/talk/' + data.slug
+
+                }).catch(err => {
+
+                    if (err.response && err.response.status == 422) {
+
+                        const errorss = err.response.data.errors;
+
+                        this.errors.setErrors(errorss);
+                    }
+
+                })
 
             }
         }
@@ -67,5 +123,10 @@
 </script>
 
 <style scoped>
+
+    .is-invalid{
+
+        border-color: red;
+    }
 
 </style>

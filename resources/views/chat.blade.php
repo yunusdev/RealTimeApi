@@ -2,7 +2,6 @@
 
 @section('styles')
 
-{{--    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">--}}
 
     <style>
         .pri{
@@ -20,10 +19,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Chats</div>
+                    <h5 >Chats on <strong><i>{{$talk->name}}</i></strong></h5>
+
+                    <p class="lead">{{$talk->description}}</p>
+                    <hr>
 
                     <div class="panel-body">
-                        <app-messages :messages= "messages" user_id = "{{auth()->id()}}"></app-messages>
+                        <app-messages :messages= "messages" talk_id="{{$talk->id}}" user_id = "{{auth()->id()}}"></app-messages>
                     </div>
                     <div class="panel-footer">
                         <app-chat

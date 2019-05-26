@@ -38,18 +38,21 @@ const app = new Vue({
 
     data: {
         messages: [],
+        talkId: 0
 
     },
 
+
     created() {
+
         this.fetchMessages();
 
         window.Echo.private('chat')
             .listen('MessageSent', (e) => {
-                // this.messages.push({
-                //     message: e.message.message,
-                //     user: e.user
-                // });
+                this.messages.push({
+                    message: e.message.message,
+                    user: e.user
+                });
 
                 console.log('here')
             });
@@ -59,7 +62,11 @@ const app = new Vue({
     methods: {
         fetchMessages() {
             axios.get('/messages').then(response => {
+
+                // console.log(response.data)
+
                 this.messages = response.data;
+
             });
         },
 
@@ -67,6 +74,7 @@ const app = new Vue({
 
             console.log(data);
             this.messages.push(data);
+            this.talkId = data.talk_id
             //
             axios.post('/messages', {message: data.message, talk_id: data.talk_id}).then(response => {
                 console.log(response.data);

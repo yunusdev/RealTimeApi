@@ -21,6 +21,12 @@ class CreateTalksTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
+
+        Schema::create('user_talks', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('talk_id')->unsigned()->index();;
+            $table->timestamps();
+        });
     }
 
     /**

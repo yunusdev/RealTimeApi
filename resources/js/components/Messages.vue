@@ -3,41 +3,26 @@
     <div>
         <div class="direct-chat-messages" v-for="message in messages">
 
-            <div class="direct-chat-msg" v-bind:class="{ 'right' : message.user.id == user_id }">
+            <div v-if="message.talk_id == talk_id" class="direct-chat-msg" v-bind:class="{ 'right direct-chat-primary' : message.user.id == user_id }">
                 <div class="direct-chat-info clearfix">
                     <span class="direct-chat-name " v-bind:class="{ 'float-right' : message.user.id != user_id, 'float-left':  message.user.id == user_id }">{{ message.user.name }}</span>
-                    <span class="direct-chat-timestamp " v-bind:class="{ 'float-left' : message.user.id != user_id, 'float-right':  message.user.id == user_id }">23 Jan 2:00 pm</span>
+                    <span class="direct-chat-timestamp " v-bind:class="{ 'float-left' : message.user.id != user_id, 'float-right':  message.user.id == user_id }">{{message.time}}</span>
                 </div>
 
                 <div class="direct-chat-text pri" style="font-weight: bolder" v-bind:style=" message.user.id == user_id ? 'color: white; background: #007bff; border: 1px solid #d2d6de;' : 'border: none;'">
                     {{ message.message }}
                 </div>
             </div>
-
-
-
-            <!--<div class="direct-chat-msg right">-->
-                <!--<div class="direct-chat-info clearfix">-->
-                    <!--<span class="direct-chat-name float-right">Sarah Bullock</span>-->
-                    <!--<span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.direct-chat-info &ndash;&gt;-->
-                <!--<img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">-->
-                <!--&lt;!&ndash; /.direct-chat-img &ndash;&gt;-->
-                <!--<div class="direct-chat-text">-->
-                    <!--You better believe it!-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.direct-chat-text &ndash;&gt;-->
-            <!--</div>-->
         </div>
 
     </div>
+
 
 </template>
 
 <script>
     export default {
-        props: ['messages', 'user_id'],
+        props: ['messages', 'user_id','talk_id'],
 
         computed: {
 
