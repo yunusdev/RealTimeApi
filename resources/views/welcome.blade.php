@@ -32,6 +32,12 @@
         <p>- To create a talk click on the modal on the top right named CREATE TALK (after logging in)</p>
         <p>- All the talks can be found <a href="{{route('all_talk')}}">here</a></p>
         <p>- Clicking on a talk will lead the attendees to the chat room</p>
+
+        <h6 class="mb-3">Test User - Login Details</h6>
+        <p>Email: <code>ade@gmail.com</code>, password: <code>adebayo123</code></p>
+        <p>Email: <code>oke@gmail.com</code>, password: <code>password123</code></p>
+        <p>Email: <code>yunus@gmail.com</code>, password: <code>password123</code></p>
+        <p>Email: <code>john@gmail.com</code>, password: <code>password123</code></p>
     </div>
 
 

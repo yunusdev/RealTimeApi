@@ -19,6 +19,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
+                    <header class="section-header" style="margin-bottom: -40px">
+                        <small><strong>Feature</strong></small>
+                        <h2>CHAT ROOM</h2>
+                        <hr>
+                    </header>
+
                     <h5 >Chats on <strong><i>{{$talk->name}}</i></strong></h5>
 
                     <p class="lead">{{$talk->description}}</p>

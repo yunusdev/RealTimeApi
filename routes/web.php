@@ -24,8 +24,7 @@ Route::post('messages', 'API\ChatsController@sendMessage');
 
 
 Route::post('talk', 'API\TalkController@store');
-//Route::get('talk/{slug}', 'API\TalkController@view');
-Route::get('/talk/chat/{slug}', 'API\TalkController@chat')->name('chat');
+Route::get('talk/{slug}', 'API\TalkController@chat')->name('chat');
 
 Route::get('all/talks', 'API\TalkController@all')->name('all_talk');
 
