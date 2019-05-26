@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5564bb0b-30eb-4113-bf1c-f2c4e628182f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-    </list>
+    <list default="true" id="5564bb0b-30eb-4113-bf1c-f2c4e628182f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +29,7 @@
           <entry key="env" value="1" />
           <entry key="html" value="3" />
           <entry key="js" value="13" />
-          <entry key="php" value="73" />
+          <entry key="php" value="74" />
           <entry key="vue" value="12" />
         </counts>
       </usages-collector>
@@ -43,7 +40,7 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="3" />
           <entry key="JavaScript" value="13" />
-          <entry key="PHP" value="49" />
+          <entry key="PHP" value="50" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Vue.js" value="12" />
         </counts>
@@ -114,8 +111,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="72" lean-forward="true" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+            <state relative-caret-position="279">
+              <caret line="64" column="29" lean-forward="true" selection-end-line="163" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/dash.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="538">
+              <caret line="163" selection-start-line="163" selection-end-line="163" />
             </state>
           </provider>
         </entry>
@@ -137,6 +143,7 @@
       <find>sara</find>
       <find>.direct-chat-messages</find>
       <find>primar</find>
+      <find>def</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,6 +186,7 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/config/database.php" />
+        <option value="$PROJECT_DIR$/config/dash.php" />
       </list>
     </option>
   </component>
@@ -359,12 +367,12 @@
       <updated>1558785871882</updated>
       <workItem from="1558785873377" duration="15021000" />
       <workItem from="1558813058367" duration="11048000" />
-      <workItem from="1558843225435" duration="21114000" />
+      <workItem from="1558843225435" duration="22066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47183000" />
+    <option name="totallyTimeSpent" value="48135000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -736,10 +744,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/dash.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="163" selection-start-line="163" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="72" lean-forward="true" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+        <state relative-caret-position="279">
+          <caret line="64" column="29" lean-forward="true" selection-end-line="163" />
         </state>
       </provider>
     </entry>
